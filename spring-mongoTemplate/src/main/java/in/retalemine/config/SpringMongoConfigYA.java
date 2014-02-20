@@ -5,10 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
-
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import com.mongodb.MongoClient;
 
 @Configuration
+@EnableMongoRepositories(basePackages = "in.retalemine.repository")
 public class SpringMongoConfigYA {
 
 	public @Bean
@@ -21,4 +22,5 @@ public class SpringMongoConfigYA {
 	MongoTemplate mongoTemplate() throws Exception {
 		return new MongoTemplate(mongoDbFactory());
 	}
+
 }

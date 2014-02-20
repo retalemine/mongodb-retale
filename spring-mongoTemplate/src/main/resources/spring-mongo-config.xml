@@ -10,4 +10,5 @@
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
 
+	<mongo:repositories base-package="in.retalemine.repository" />
 </beans>

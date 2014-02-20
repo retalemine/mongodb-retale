@@ -1,8 +1,8 @@
-Spring-MongoDB project(web):
+Spring-MongoDB project(app):
 ============================
  * Uses Spring Data MongoDB
- * Uses Spring Boot
- * Uses MongoDB repository approach
+ * Uses MongoDB Template approach
+ * Uses MongoDB Repository approach
 
 Maven settings and commands:
 ============================
@@ -13,12 +13,7 @@ Maven settings and commands:
         <artifactId>spring-data-mongodb</artifactId>
         <version>1.3.3.RELEASE</version>
     </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
 ``
  * mvn clean package
- * mvn spring-boot:run
- * mvn exec:java
-
+ * mvn exec:java -Dexec.mainClass="in.retalemine.App"
+ * mvn exec:java -Dexec.mainClass="in.retalemine.App" -Dexec.args="'first arg'"
