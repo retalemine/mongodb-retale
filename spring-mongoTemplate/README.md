@@ -17,3 +17,9 @@ Maven settings and commands:
  * mvn clean package
  * mvn exec:java -Dexec.mainClass="in.retalemine.App"
  * mvn exec:java -Dexec.mainClass="in.retalemine.App" -Dexec.args="'first arg'"
+
+TODO:
+=====
+ * Logger
+ * TestClass
+ * Converter

@@ -6,6 +6,8 @@ import in.retalemine.config.SpringMongoConfigYA;
 import in.retalemine.model.Customer;
 import in.retalemine.model.Employee;
 import in.retalemine.repository.CustomerRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -21,6 +23,8 @@ import org.springframework.data.mongodb.core.query.Update;
  */
 public class App {
 
+	static final Logger logger = LoggerFactory.getLogger(App.class);
+
 	public static void main(String[] args) {
 		App app = new App();
 		ApplicationContext ctx;
@@ -31,8 +35,10 @@ public class App {
 //		ctx = new AnnotationConfigApplicationContext(SpringMongoConfigYA.class);
 
 		System.out.println("Beans available in application contex:");
+		logger.info("Beans available in application context");
 		for (String beanname : ctx.getBeanDefinitionNames()) {
 			System.out.println(beanname);
+			logger.info("Bean Name - {}", beanname);
 		}
 
 		if (args.length > 0) {
