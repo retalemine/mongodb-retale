@@ -1,11 +1,28 @@
 package in.retalemine;
 
-import java.util.List;
+import static javax.measure.unit.SI.KILOGRAM;
 import in.retalemine.config.SpringMongoConfig;
 import in.retalemine.config.SpringMongoConfigYA;
+import in.retalemine.entity.Bill;
+import in.retalemine.entity.BillItem;
+import in.retalemine.entity.Custom;
+import in.retalemine.entity.Payment;
+import in.retalemine.entity.PaymentMode;
+import in.retalemine.entity.Product;
+import in.retalemine.entity.Tax;
+import in.retalemine.entity.TaxType;
 import in.retalemine.model.Customer;
 import in.retalemine.model.Employee;
+import in.retalemine.repository.Billrepository;
 import in.retalemine.repository.CustomerRepository;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.measure.Measure;
+import javax.measure.unit.UnitFormat;
+import org.jscience.economics.money.Currency;
+import org.jscience.economics.money.Money;
+import org.jscience.physics.amount.Amount;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -49,7 +66,44 @@ public class App {
 			CustomerRepository customerRepository = (CustomerRepository) ctx
 					.getBean(CustomerRepository.class);
 			app.springMongoRepository(customerRepository);
+			Billrepository billrepository = (Billrepository) ctx
+					.getBean(Billrepository.class);
+			app.springMongoBillRepository(billrepository);
 		}
+	}
+
+	private void springMongoBillRepository(Billrepository billrepository) {
+		billrepository.deleteAll();
+
+		Custom customer = new Custom("Subramani", 9934, "first street");
+		Payment payment = new Payment(PaymentMode.CASH, false, true, new Date());
+		Tax tax = new Tax(TaxType.VAT, 4.0, 0.0);
+		Currency INR = new Currency("INR");
+		// UnitFormat.getInstance().label(INR, "₹");
+		UnitFormat.getInstance().alias(INR, "₹");
+		Product prod = new Product("Sugar", Measure.valueOf(1.0, KILOGRAM),
+				Amount.valueOf(45.0, INR));
+		BillItem bItem = new BillItem(prod, Measure.valueOf(5.0, KILOGRAM),
+				Amount.valueOf(145.0, INR));
+		List<BillItem> bItems = new ArrayList<BillItem>();
+		bItems.add(bItem);
+		Amount<Money> totalAmount = Amount.valueOf(60.5, INR);
+		Bill bill = new Bill(1, new Date(), bItems, totalAmount, tax, payment,
+				customer, false);
+		billrepository.save(bill);
+	}
+
+	private void loging(Amount<Money> totalAmount, Currency INR) {
+		logger.info("TotalAmount Obj {}", totalAmount);
+		logger.info("TotalAmount tostring {}", totalAmount.toString());
+		logger.info("TotalAmount abs {}", totalAmount.abs());
+		logger.info("TotalAmount approx {}",
+				totalAmount.approximates(Amount.valueOf(60.5, INR)));
+		logger.info("TotalAmount estimated {}", totalAmount.getEstimatedValue());
+		logger.info("TotalAmount max {}", totalAmount.getMaximumValue());
+		logger.info("TotalAmount min {}", totalAmount.getMinimumValue());
+		logger.info("TotalAmount unit {}", totalAmount.getUnit());
+		logger.info("TotalAmount text {}", totalAmount.toText());
 	}
 
 	private void springMongoRepository(CustomerRepository customerRepository) {

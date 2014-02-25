@@ -3,6 +3,7 @@ Spring-MongoDB project(app):
  * Uses Spring Data MongoDB
  * Uses MongoDB Template approach
  * Uses MongoDB Repository approach
+ * Uses Custom converters
 
 Maven settings and commands:
 ============================
@@ -17,6 +18,8 @@ Maven settings and commands:
  * mvn clean package
  * mvn exec:java -Dexec.mainClass="in.retalemine.App"
  * mvn exec:java -Dexec.mainClass="in.retalemine.App" -Dexec.args="'first arg'"
+ * -Dmaven.test.skip=true __skips compilation and execution__ 
+ * -DskipTests=true __skips execution__
 
 TODO:
 =====

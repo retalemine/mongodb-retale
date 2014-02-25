@@ -6,36 +6,31 @@
 
 	<mongo:db-factory id="mongoDbFactory" dbname="retalemine" />
 
+	<mongo:mapping-converter base-package="in.retalemine.converters">
+		<mongo:custom-converters>
+			<mongo:converter>
+				<bean class="in.retalemine.converters.PaymentWriteConverter" />
+			</mongo:converter>
+			<mongo:converter>
+				<bean class="in.retalemine.converters.PaymentReadConverter" />
+			</mongo:converter>
+			<mongo:converter>
+				<bean class="in.retalemine.converters.AmountWriteConverter" />
+			</mongo:converter>
+			<mongo:converter>
+				<bean class="in.retalemine.converters.AmountReadConverter" />
+			</mongo:converter>
+			<mongo:converter>
+				<bean class="in.retalemine.converters.MeasureWriteConverter" />
+			</mongo:converter>
+		</mongo:custom-converters>
+	</mongo:mapping-converter>
+
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+		<constructor-arg name="mongoConverter" ref="mappingConverter" />
 	</bean>
 
 	<mongo:repositories base-package="in.retalemine.repository" />
-</beans>
 
-<!--
-	<mongo:mongo host="localhost" port="27017" />
- 
-	<bean id="mongoTemplate" class="org.springframework.data.document.mongodb.MongoTemplate">
-		<constructor-arg ref="mongo" />
-		<constructor-arg name="databaseName" value="retalemine" />
-		<constructor-arg name="defaultCollectionName" value="default" />
-	</bean> 
-	
-	<context:annotation-config />
- -->
- 
- <!-- 
- 
- 	<mongo:db-factory id="mongoDbFactory" dbname="e-store" />
- 
- 	<mongo:mapping-converter id="mongoConverter" base-package="com.oreilly.springdata.mongodb">
-		<mongo:custom-converters base-package="com.oreilly.springdata.mongodb" />
-	</mongo:mapping-converter>
-	
-	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-		<constructor-arg ref="mongoDbFactory" />
-		<constructor-arg ref="mongoConverter" />
-		<property name="writeConcern" value="SAFE" />
-	</bean>
-  -->
+</beans>
