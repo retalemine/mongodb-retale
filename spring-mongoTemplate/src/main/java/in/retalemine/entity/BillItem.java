@@ -1,23 +1,40 @@
 package in.retalemine.entity;
 
+import in.retalemine.constants.MongoDBKeys;
 import javax.measure.Measure;
+import javax.measure.quantity.Quantity;
 import org.jscience.economics.money.Money;
 import org.jscience.physics.amount.Amount;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-public class BillItem extends Product {
-	@Field("qty")
-	private Measure<?, ?> quantity;
+public class BillItem<Q extends Quantity> extends Item<Q> {
+
+	@Field(MongoDBKeys.BILL_ITEM_QTY)
+	private Measure<Double, Q> quantity;
 	@Transient
 	private Amount<Money> amount;
 
-	public BillItem(Product product, Measure<?, ?> quantity,
+	public BillItem(){
+	}
+	
+	public BillItem(String productName, Measure<Double, Q> productUnit,
+			Amount<Money> unitPrice, Measure<Double, Q> quantity,
 			Amount<Money> amount) {
-		this.productName = product.productName;
-		this.unit = product.unit;
-		this.unitPrice = product.unitPrice;
+		super(productName, productUnit, unitPrice);
 		this.quantity = quantity;
+		//Assert.assertEquals(calculateAmount(productUnit, unitPrice, quantity), amount);
 		this.amount = amount;
 	}
+
+	public Amount<Money> getAmount() {
+		return amount;
+	}
+
+	private Object calculateAmount(Measure<Double, Q> productUnit,
+			Amount<Money> unitPrice, Measure<Double, Q> quantity2) {
+		return unitPrice.times(quantity.to(productUnit.getUnit()).getValue()
+				/ productUnit.getValue());
+	}
+
 }

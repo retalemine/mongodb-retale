@@ -1,5 +1,6 @@
 package in.retalemine.converters;
 
+import in.retalemine.constants.MongoDBKeys;
 import javax.measure.Measure;
 import org.springframework.core.convert.converter.Converter;
 import com.mongodb.BasicDBObject;
@@ -10,10 +11,10 @@ public class MeasureWriteConverter implements
 
 	@Override
 	public DBObject convert(Measure<?, ?> source) {
-		DBObject obj = new BasicDBObject();
-		obj.put("value", source.getValue());
-		obj.put("unit", source.getUnit().toString());
-		return obj;
+		DBObject dbO = new BasicDBObject();
+		dbO.put(MongoDBKeys.VALUE, source.getValue());
+		dbO.put(MongoDBKeys.UNIT, source.getUnit().toString());
+		return dbO;
 	}
 
 }

@@ -1,22 +1,22 @@
 package in.retalemine.entity;
 
-import org.springframework.data.annotation.Transient;
+import in.retalemine.constants.MongoDBKeys;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Tax {
 
-	@Field("type")
+	@Field(MongoDBKeys.TAX_TYPE)
 	private TaxType taxType;
-	@Field("pct")
+	@Field(MongoDBKeys.TAX_PERCENTAGE)
 	private Double taxPercent;
-	@Transient
-	private Double taxValue;
 
-	public Tax(TaxType taxType, Double taxPercent, Double taxValue) {
+	public Tax(TaxType taxType, Double taxPercent) {
 		super();
 		this.taxType = taxType;
 		this.taxPercent = taxPercent;
-		this.taxValue = taxValue;
 	}
-
+	
+	public Double getTaxPercent() {
+		return taxPercent;
+	}
 }

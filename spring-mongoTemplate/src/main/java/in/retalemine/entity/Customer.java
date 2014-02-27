@@ -1,17 +1,19 @@
 package in.retalemine.entity;
 
+import in.retalemine.constants.MongoDBKeys;
+
 import org.springframework.data.mongodb.core.mapping.Field;
 
-public class Custom {
+public class Customer {
 
-	@Field("name")
+	@Field(MongoDBKeys.CUSTOMER_NAME)
 	private String customerName;
-	@Field("contactNo")
+	@Field(MongoDBKeys.CUSTOMER_CONTACT_NO)
 	private Integer contactNo;
-	@Field("address")
+	@Field(MongoDBKeys.CUSTOMER_ADDRESS)
 	private String address;
 
-	public Custom(String customerName, Integer contactNo, String address) {
+	public Customer(String customerName, Integer contactNo, String address) {
 		super();
 		this.customerName = customerName;
 		this.contactNo = contactNo;

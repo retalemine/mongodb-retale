@@ -1,17 +1,18 @@
 package in.retalemine.entity;
 
+import in.retalemine.constants.MongoDBKeys;
 import java.util.Date;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Payment {
 
-	@Field("mode")
+	@Field(MongoDBKeys.BILL_PAYMENT_MODE)
 	private PaymentMode payMode;
-	@Field("delayed")
+	@Field(MongoDBKeys.BILL_PAYMENT_DELAYED)
 	private Boolean isDelayedPay;
-	@Field("paid")
+	@Field(MongoDBKeys.BILL_PAYMENT_PAID)
 	private Boolean isPaid;
-	@Field("date")
+	@Field(MongoDBKeys.BILL_PAYMENT_DATE)
 	private Date paidDate;
 
 	public Payment(PaymentMode payMode, Boolean isDelayedPay, Boolean isPaid,
@@ -27,31 +28,15 @@ public class Payment {
 		return payMode;
 	}
 
-	public void setPayMode(PaymentMode payMode) {
-		this.payMode = payMode;
-	}
-
-	public Boolean getIsDelayedPay() {
+	public Boolean isDelayedPay() {
 		return isDelayedPay;
 	}
 
-	public void setIsDelayedPay(Boolean isDelayedPay) {
-		this.isDelayedPay = isDelayedPay;
-	}
-
-	public Boolean getIsPaid() {
+	public Boolean isPaid() {
 		return isPaid;
-	}
-
-	public void setIsPaid(Boolean isPaid) {
-		this.isPaid = isPaid;
 	}
 
 	public Date getPaidDate() {
 		return paidDate;
-	}
-
-	public void setPaidDate(Date paidDate) {
-		this.paidDate = paidDate;
 	}
 }

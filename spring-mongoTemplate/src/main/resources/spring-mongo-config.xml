@@ -23,6 +23,9 @@
 			<mongo:converter>
 				<bean class="in.retalemine.converters.MeasureWriteConverter" />
 			</mongo:converter>
+			<mongo:converter>
+				<bean class="in.retalemine.converters.MeasureReadConverter" />
+			</mongo:converter>
 		</mongo:custom-converters>
 	</mongo:mapping-converter>
 

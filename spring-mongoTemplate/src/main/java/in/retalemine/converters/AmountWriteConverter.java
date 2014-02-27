@@ -1,5 +1,6 @@
 package in.retalemine.converters;
 
+import in.retalemine.constants.MongoDBKeys;
 import org.jscience.physics.amount.Amount;
 import org.springframework.core.convert.converter.Converter;
 import com.mongodb.BasicDBObject;
@@ -9,10 +10,10 @@ public class AmountWriteConverter implements Converter<Amount<?>, DBObject> {
 
 	@Override
 	public DBObject convert(Amount<?> source) {
-		DBObject obj = new BasicDBObject();
-		obj.put("value", source.getEstimatedValue());
-		obj.put("unit", source.getUnit().toString());
-		return obj;
+		DBObject dbO = new BasicDBObject();
+		dbO.put(MongoDBKeys.VALUE, source.getEstimatedValue());
+		dbO.put(MongoDBKeys.UNIT, source.getUnit().toString());
+		return dbO;
 	}
 
 }
