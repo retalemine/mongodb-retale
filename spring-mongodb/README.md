@@ -7,7 +7,7 @@ Spring-MongoDB project(web):
 Maven settings and commands:
 ============================
  * Dependency
-``
+```
     <dependency>
         <groupId>org.springframework.data</groupId>
         <artifactId>spring-data-mongodb</artifactId>
@@ -17,7 +17,7 @@ Maven settings and commands:
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
-``
+```
  * mvn clean package
  * mvn spring-boot:run
  * mvn exec:java

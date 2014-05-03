@@ -32,7 +32,7 @@ public class BillItem<Q extends Quantity> extends Item<Q> {
 	}
 
 	private Object calculateAmount(Measure<Double, Q> productUnit,
-			Amount<Money> unitPrice, Measure<Double, Q> quantity2) {
+			Amount<Money> unitPrice, Measure<Double, Q> quantity) {
 		return unitPrice.times(quantity.to(productUnit.getUnit()).getValue()
 				/ productUnit.getValue());
 	}
