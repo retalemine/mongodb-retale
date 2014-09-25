@@ -1,6 +1,7 @@
 package in.retalemine.entity;
 
 import in.retalemine.constants.MongoDBKeys;
+
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class Tax {
@@ -11,12 +12,8 @@ public class Tax {
 	private Double taxPercent;
 
 	public Tax(TaxType taxType, Double taxPercent) {
-		super();
 		this.taxType = taxType;
 		this.taxPercent = taxPercent;
 	}
-	
-	public Double getTaxPercent() {
-		return taxPercent;
-	}
+
 }

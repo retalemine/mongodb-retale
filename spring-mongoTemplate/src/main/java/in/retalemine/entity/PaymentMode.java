@@ -1,7 +1,7 @@
 package in.retalemine.entity;
 
 public enum PaymentMode {
-	CASH("cash"), CHEQUE("cheque");
+	CASH("Cash"), CHEQUE("Cheque");
 
 	private String value;
 
@@ -13,4 +13,15 @@ public enum PaymentMode {
 		return value;
 	}
 
+	public static PaymentMode getPaymentMode(String value) {
+		if (null != value && !value.trim().isEmpty()) {
+			value = value.trim();
+			for (PaymentMode mode : PaymentMode.values()) {
+				if (mode.value.equalsIgnoreCase(value)) {
+					return mode;
+				}
+			}
+		}
+		return null;
+	}
 }

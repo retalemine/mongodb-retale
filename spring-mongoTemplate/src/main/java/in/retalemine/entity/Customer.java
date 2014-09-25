@@ -14,9 +14,9 @@ public class Customer {
 	private String address;
 
 	public Customer(String customerName, Integer contactNo, String address) {
-		super();
 		this.customerName = customerName;
 		this.contactNo = contactNo;
 		this.address = address;
 	}
+
 }

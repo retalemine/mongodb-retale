@@ -1,15 +1,17 @@
 package in.retalemine.repository;
 
-import in.retalemine.model.Customer;
+import in.retalemine.entity.Customer;
+
 import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepository extends MongoRepository<Customer, String> {
 
-	public Customer findByFirstName(String firstName);
+	public Customer findByCustomerName(String customerName);
 
-	public List<Customer> findByLastName(String lastName);
+	public List<Customer> findByContactNo(Integer contactNo);
 
 }
