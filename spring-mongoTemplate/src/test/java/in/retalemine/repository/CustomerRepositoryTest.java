@@ -46,6 +46,8 @@ public class CustomerRepositoryTest extends AbstractTestNGSpringContextTests {
 		for (Customer customer : customerRepository.findByContactNo(101)) {
 			System.out.println(customer);
 		}
+
+		customerRepository.insert(new Customer("Alex", 301, "address 3"));
 	}
 
 }
