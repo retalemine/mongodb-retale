@@ -4,10 +4,11 @@ import in.retalemine.constants.MongoDBKeys;
 
 import org.jscience.physics.amount.Amount;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.convert.WritingConverter;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-
+@WritingConverter
 public class AmountWriteConverter implements Converter<Amount<?>, DBObject> {
 
 	@Override

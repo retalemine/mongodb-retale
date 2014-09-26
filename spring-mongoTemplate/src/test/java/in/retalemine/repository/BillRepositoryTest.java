@@ -38,7 +38,7 @@ public class BillRepositoryTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private MongoConverter mongoConverter;
 
-	@Test()
+	@Test(enabled = true)
 	public void test_save() {
 
 		billrepository.deleteAll();

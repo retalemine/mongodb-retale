@@ -21,7 +21,7 @@ public class CustomerRepositoryTest extends AbstractTestNGSpringContextTests {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Test()
+	@Test(enabled = true)
 	public void test_save() {
 		customerRepository.deleteAll();
 

@@ -5,6 +5,7 @@ Spring-MongoDB project(app):
  * Uses MongoDB Repository approach
  * Uses Custom converters
  * Uses MongoDB Repository approach with a custom impl for one class
+ * Uses MongoDB Repository approach with a common custom impl for all classes
 
 Maven settings and commands:
 ============================

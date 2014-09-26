@@ -30,7 +30,7 @@ public class ProductRepositoryTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private MongoConverter mongoConverter;
 
-	@Test()
+	@Test(enabled = true)
 	public void test_save() {
 		Currency INR = new Currency("INR");
 		Set<Amount<Money>> prices = new HashSet<Amount<Money>>();

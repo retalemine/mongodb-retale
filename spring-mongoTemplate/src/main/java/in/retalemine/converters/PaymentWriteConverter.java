@@ -4,10 +4,11 @@ import in.retalemine.constants.MongoDBKeys;
 import in.retalemine.entity.Payment;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.convert.WritingConverter;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-
+@WritingConverter
 public class PaymentWriteConverter implements Converter<Payment, DBObject> {
 
 	@Override

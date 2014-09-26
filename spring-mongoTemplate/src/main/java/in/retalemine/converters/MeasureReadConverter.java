@@ -6,9 +6,10 @@ import javax.measure.Measure;
 import javax.measure.unit.Unit;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.convert.ReadingConverter;
 
 import com.mongodb.DBObject;
-
+@ReadingConverter
 public class MeasureReadConverter implements Converter<DBObject, Measure<?, ?>> {
 
 	public Measure<?, ?> convert(DBObject source) {

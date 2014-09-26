@@ -7,9 +7,10 @@ import in.retalemine.entity.PaymentMode;
 import java.util.Date;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.convert.ReadingConverter;
 
 import com.mongodb.DBObject;
-
+@ReadingConverter
 public class PaymentReadConverter implements Converter<DBObject, Payment> {
 
 	@Override
